@@ -1,3 +1,3 @@
-## Scatterplots
+## Resources
 
-- [Scatterplots]()
+- [Scatterplots](https://github.com/ramyaragupathy/Playground/blob/master/DataBasics/ScatterPlot.md)
