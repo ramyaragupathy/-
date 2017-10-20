@@ -32,6 +32,8 @@ clf = clf.fit(X, Y)
 #Training tree varibale on our dataset. Fit method calle don the classifier variable
 #Fit method traisn the decision tree on our dataset
 
-prediction = clf.predict([[180,80,43]])
+prediction = clf.predict([[150,60,40]])
 
 print (prediction)
+
+print(tree.export_graphviz(clf, out_file='tree.png'))
