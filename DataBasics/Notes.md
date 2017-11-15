@@ -1,0 +1,8 @@
+- Basic maths & Statistics
+  - Hadoop, MapReduce
+   - similar to SQL
+- Statistical package
+  - R, Python, Stata
+  - Helps in numerical analysis on data
+- Dealing with ambiguity
+  - Ask questions on your own on what's next
