@@ -1,4 +1,4 @@
-#Use either type of quote to define strings. 
+# Use either type of quote to define strings. 
 # concatenation
 firstname = "Ramya"
 lastname = "Ragupathy"
@@ -23,3 +23,13 @@ print(username + " accessed the site " + url + " at " + timestamp + ".")
 # `len` function is similar to `print` in that we call it by passing a variable 
 # as the argument inside of parentheses. `len` differs from `print` in that it 
 # produces a value that can be stored in a variable. 
+
+#todo: calculate how long this name is
+given_name = "Charlotte"
+middle_names = "Hippopotamus"
+family_name = "Turner"
+
+name_length = len(given_name +" "+ middle_names + " "+family_name)
+
+driving_licence_character_limit = 28
+print(name_length <= driving_licence_character_limit)
