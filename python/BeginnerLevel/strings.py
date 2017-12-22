@@ -48,3 +48,41 @@ total_sales = int(mon_sales) + int(tues_sales)  + int(wed_sales) + int(thurs_sal
 # print("This week's total sales: " + total_sales) will throw an error
 # In JS you need ntoo worry about the type conversion
 print("This week's total sales: " + str(total_sales))
+
+# Operating on values using operators, functions, methods
+# Methods are related to functions but unlike functions, 
+# methods are associated with specific types of objects. 
+
+# STRING METHODS
+full_name = "ramya raGuPathy"
+
+# object is a string with the value, "ramya raGuPathy", 
+# and we are calling its `title` method. 
+# The method returns a string in Title Case, 
+# meaning that the first letter of each word is capitalized.
+print(full_name.title())
+# `islower` method inspects the string object it has been called with. 
+# In this case the string object is ramya raGuPathy". 
+# `islower` then returns a bool that indicates 
+# whether the string object consists of lowercase letters.
+print(full_name.islower())
+
+## Vowel Count example
+
+prophecy = "And there shall in that time be rumours of things going astray, and there will be a great confusion as to where things really are, and nobody will really know where lieth those little things with the sort of raffia work base, that has an attachment…at this time, a friend shall lose his friends’s hammer and the young shall not know where lieth the things possessed by their fathers that their fathers put there only just the night before around eight o’clock…"
+vowel_count = 0
+
+# TODO: set the value of vowel_count to be the number of vowels in prophecy
+
+# convert the entire stirng to lower case
+prophecy = prophecy.lower()
+print(prophecy)
+# `count` method returns how many times the substring occurs in a string
+vowel_count += prophecy.count('a')
+vowel_count += prophecy.count('e')
+vowel_count += prophecy.count('i')
+vowel_count += prophecy.count('o')
+vowel_count += prophecy.count('u')
+
+# Print the final count
+print(vowel_count)
