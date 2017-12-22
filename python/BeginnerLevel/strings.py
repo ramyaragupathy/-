@@ -1,4 +1,4 @@
-# Use either type of quote to define strings. 
+#Use either type of quote to define strings. 
 # concatenation
 firstname = "Ramya"
 lastname = "Ragupathy"
@@ -19,3 +19,7 @@ username = "Kinari"
 timestamp = "04:50"
 url = "http://petshop.com/pets/mammals/cats"
 print(username + " accessed the site " + url + " at " + timestamp + ".")
+
+# `len` function is similar to `print` in that we call it by passing a variable 
+# as the argument inside of parentheses. `len` differs from `print` in that it 
+# produces a value that can be stored in a variable. 
