@@ -54,6 +54,8 @@ print("This week's total sales: " + str(total_sales))
 # methods are associated with specific types of objects. 
 
 # STRING METHODS
+# https://docs.python.org/3/library/stdtypes.html#string-methods
+
 full_name = "ramya raGuPathy"
 
 # object is a string with the value, "ramya raGuPathy", 
@@ -86,3 +88,21 @@ vowel_count += prophecy.count('u')
 
 # Print the final count
 print(vowel_count)
+
+sentence = "ramya ragupathy Is working on this"
+print(sentence.capitalize()) # Ramya ragupathy is working on this
+print(sentence.count('work',10,302)) # 1
+print(sentence.endswith('is')) # True
+print(sentence.casefold()) # ramya ragupathy is working on this
+print('ramya' in sentence) # True
+print(sentence.find('is')) # 32
+
+# What is the current status? ramya ragupathy Is working on this, Oh cool!
+print('What is the current status? {}, {}'.format(sentence,"Oh cool!"))
+
+# What is the current status? Oh cool!, ramya ragupathy Is working on this
+print('What is the current status? {1}, {0}'.format(test,"Oh cool!"))
+
+print(sentence.index('what')) # error: substring not found
+print(sentence.find('what')) # -1
+print('what' in sentence) # False
