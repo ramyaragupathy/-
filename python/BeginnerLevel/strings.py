@@ -1,4 +1,4 @@
-#Use either type of quote to define strings. 
+# Use either type of quote to define strings. 
 # concatenation
 firstname = "Ramya"
 lastname = "Ragupathy"
