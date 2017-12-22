@@ -101,7 +101,7 @@ print(sentence.find('is')) # 32
 print('What is the current status? {}, {}'.format(sentence,"Oh cool!"))
 
 # What is the current status? Oh cool!, ramya ragupathy Is working on this
-print('What is the current status? {1}, {0}'.format(test,"Oh cool!"))
+print('What is the current status? {1}, {0}'.format(sentence,"Oh cool!"))
 
 print(sentence.index('what')) # error: substring not found
 print(sentence.find('what')) # -1
