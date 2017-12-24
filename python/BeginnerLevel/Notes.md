@@ -149,3 +149,11 @@ Traceback (most recent call last):
 TypeError: sequence item 1: expected str instance, int found
 ```
 
+#### Sorting
+
+Use `list.sort()` when you want to mutate the list, `sorted()` when you want a new sorted object back.
+
+```
+python_varieties = ['Burmese Python', 'African Rock Python', 'Ball Python', 'Reticulated Python', 'Angolan Python']
+print(sorted(python_varieties,reverse=True)) # Returns a new list
+python_varieties.sort() # Mutates the existing list
