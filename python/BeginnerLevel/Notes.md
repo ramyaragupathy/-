@@ -94,6 +94,7 @@ def garden_calendar(season):
 
 
 ![image](https://user-images.githubusercontent.com/12103383/34324455-d4ea46ca-e899-11e7-8171-27572d08e544.png)
+<br>
 _end element excluded_
 
 - `list` is a type, like `string`, `float` and `int`. Of the types we've seen, lists are most like strings: both types support indexing, slicing, the `len` function and the `in` operator. So, how are lists different from strings? The obvious difference is that strings are sequences of letters, while list elements can be any type of object. A more subtle difference is that lists can be modified, but strings can't be.
@@ -106,18 +107,22 @@ Returns the greatest element of the list. How the greatest element is determined
 This works because the the max function is defined in terms of >, the greater than comparison operator. The > operator is defined for many non-numeric types; if you're working with objects that can be compared with > then you can use max on a list of the objects. For strings the standard comparison is alphabetical, so the maximum of this list is the element that appears last alphabetically.
 
 The max function is undefined for lists that contain elements from different, incomparable types:
+
 ```
 >>> max([42, 'African Swallow'])
 TypeError: unorderable types: str() > int()
 ```
+</br>
 This is because max is defined in terms of >. If two objects in the list can't be compared, the maximum element can't be determined.The maximum elements in a list of strings is element that would occur last of the list were sorted alphabetically.
 
 This works because the the max function is defined in terms of >, the greater than comparison operator. The > operator is defined for many non-numeric types; if you're working with objects that can be compared with > then you can use max on a list of the objects. For strings the standard comparison is alphabetical, so the maximum of this list is the element that appears last alphabetically.
 
 The max function is undefined for lists that contain elements from different, incomparable types:
 
+```
 >>> max([42, 'African Swallow'])
 TypeError: unorderable types: str() > int()
+```
 This is because max is defined in terms of >. If two objects in the list can't be compared, the maximum element can't be determined.
 
 
