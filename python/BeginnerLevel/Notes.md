@@ -52,3 +52,20 @@ The next element of a docstring is an explanation of the function's arguments. H
  bank_balance -= 10
  ```
 This indented block of code will be executed if the boolean expression evaluates to True. If the boolean expression evaluates to False, the indented block will not be executed.
+
+### if-elif-else
+```
+def garden_calendar(season):
+    if season == "spring":
+        print("time to plant the garden!")
+    elif season == "summer":
+        print("time to water the garden!")
+    elif season == "autumn" or season == "fall":
+        print("time to harvest the garden!")
+    elif season == "winter":
+        print("time to stay indoors and drink tea!")
+    else:
+        print("I don't recognize that season")
+ ```
+ 
+ The `else` keyword is always followed by a colon and doesn't need a boolean expression - it is simply what happens when the boolean expression from the if statement is False. `if` and `elif` statement always requires a conditional expression.
