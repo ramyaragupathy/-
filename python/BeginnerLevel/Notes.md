@@ -43,9 +43,9 @@ The next element of a docstring is an explanation of the function's arguments. H
 
 ![image](https://user-images.githubusercontent.com/12103383/34324299-893f8ccc-e893-11e7-9f93-cd992b17afcc.png)
 
-(1) The if keyword indicates that this line is a conditional expression.
-(2) Following if is phone_balance < 10, the condition to be checked. This part is a boolean expression - an expression that evaluates to either True or False.
-(3) The conditional expression (or "if statement") ends with a colon.
+(1) The if keyword indicates that this line is a conditional expression.</br>
+(2) Following if is phone_balance < 10, the condition to be checked. This part is a boolean expression - an expression that evaluates to either True or False.</br>
+(3) The conditional expression (or "if statement") ends with a colon.</br>
 (4) This line is followed by an indented block of code, in this case:
 ```
  phone_balance += 10   
