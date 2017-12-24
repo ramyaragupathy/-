@@ -37,6 +37,20 @@ Docstrings are surrounded by triple quotes, """. The first line of the docstring
 
 The next element of a docstring is an explanation of the function's arguments. Here you list the arguments, state their purpose, and what types the arguments should be. A more thorough explanation of docstring conventions at https://www.python.org/dev/peps/pep-0257/.
 
+### Return statements
+
+As soon as `return` is executed in a function, execution will leave that function. Every return is a possible exit from the function.
+
+```
+def cylinder_surface_area(radius, height, has_top_and_bottom):
+    side_area = height * 6.28 * radius
+    if has_top_and_bottom:
+        top_area = 3.14 * radius ** 2
+        return 2 * top_area + side_area
+    else:
+        return side_area
+```
+
 ## Conditional Expression
 
 
@@ -69,3 +83,64 @@ def garden_calendar(season):
  ```
  
  The `else` keyword is always followed by a colon and doesn't need a boolean expression - it is simply what happens when the boolean expression from the if statement is False. `if` and `elif` statement always requires a conditional expression.
+ 
+ 
+## Data Structures
+
+### Lists
+- zero based indexing: first element in the list is located at index 0 rather than index 1
+- negative indexes: The index -1 refers to the last element of the list, -2 to the second to last, and so on.
+- Slicing list
+
+
+![image](https://user-images.githubusercontent.com/12103383/34324455-d4ea46ca-e899-11e7-8171-27572d08e544.png)
+_end element excluded_
+
+- `list` is a type, like `string`, `float` and `int`. Of the types we've seen, lists are most like strings: both types support indexing, slicing, the `len` function and the `in` operator. So, how are lists different from strings? The obvious difference is that strings are sequences of letters, while list elements can be any type of object. A more subtle difference is that lists can be modified, but strings can't be.
+
+![image](https://user-images.githubusercontent.com/12103383/34324499-5ddf8ca0-e89b-11e7-97c9-690a8810bde8.png)
+
+#### max(some_list)
+Returns the greatest element of the list. How the greatest element is determined depends on what type objects are in the list. The maximum element in a list of numbers is the largest number.The maximum elements in a list of strings is element that would occur last of the list were sorted alphabetically.
+
+This works because the the max function is defined in terms of >, the greater than comparison operator. The > operator is defined for many non-numeric types; if you're working with objects that can be compared with > then you can use max on a list of the objects. For strings the standard comparison is alphabetical, so the maximum of this list is the element that appears last alphabetically.
+
+The max function is undefined for lists that contain elements from different, incomparable types:
+```
+>>> max([42, 'African Swallow'])
+TypeError: unorderable types: str() > int()
+```
+This is because max is defined in terms of >. If two objects in the list can't be compared, the maximum element can't be determined.The maximum elements in a list of strings is element that would occur last of the list were sorted alphabetically.
+
+This works because the the max function is defined in terms of >, the greater than comparison operator. The > operator is defined for many non-numeric types; if you're working with objects that can be compared with > then you can use max on a list of the objects. For strings the standard comparison is alphabetical, so the maximum of this list is the element that appears last alphabetically.
+
+The max function is undefined for lists that contain elements from different, incomparable types:
+
+>>> max([42, 'African Swallow'])
+TypeError: unorderable types: str() > int()
+This is because max is defined in terms of >. If two objects in the list can't be compared, the maximum element can't be determined.
+
+
+#### Join
+
+![image](https://user-images.githubusercontent.com/12103383/34324598-d41017a2-e89e-11e7-998f-9107567b1f56.png)
+
+
+The join takes a list as an argument, and returns a string consisting of the list elements joined by a separator string. In this example we use the string \n as the separator so that there is a newline between each element.
+
+We can also use other strings (instead of '\n') with .join For instance:
+```
+>>> names = ["García", "O'Kelly", "Davis"]
+>>> "-".join(names)
+"García-O'Kelly-Davis"
+```
+
+Also note thatjoin will trigger an error if we try to join anything other than strings. For example:
+```
+>>> stuff = ["thing", 42, "nope"]
+>>> " and ".join(stuff)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: sequence item 1: expected str instance, int found
+```
+
