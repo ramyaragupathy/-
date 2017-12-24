@@ -36,3 +36,19 @@ There is one further technique for making functions more readable, **documentati
 Docstrings are surrounded by triple quotes, """. The first line of the docstring is a brief explanation of the function's purpose. If you feel that this is sufficient documentation you can end the docstring at this point, single line docstrings are perfectly acceptable. If you think that the function is complicated enough to warrant a longer description, you can add a more thorough paragraph after the one line summary.
 
 The next element of a docstring is an explanation of the function's arguments. Here you list the arguments, state their purpose, and what types the arguments should be. A more thorough explanation of docstring conventions at https://www.python.org/dev/peps/pep-0257/.
+
+## Conditional Expression
+
+
+
+![image](https://user-images.githubusercontent.com/12103383/34324299-893f8ccc-e893-11e7-9f93-cd992b17afcc.png)
+
+(1) The if keyword indicates that this line is a conditional expression.
+(2) Following if is phone_balance < 10, the condition to be checked. This part is a boolean expression - an expression that evaluates to either True or False.
+(3) The conditional expression (or "if statement") ends with a colon.
+(4) This line is followed by an indented block of code, in this case:
+```
+ phone_balance += 10   
+ bank_balance -= 10
+ ```
+This indented block of code will be executed if the boolean expression evaluates to True. If the boolean expression evaluates to False, the indented block will not be executed.
