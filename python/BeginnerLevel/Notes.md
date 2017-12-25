@@ -169,3 +169,13 @@ python_varieties.sort() # Mutates the existing list
 (3) The body of a for loop is indented four spaces, and is run once for each element in the list.</br>
 A note about naming You can name iteration variables however you like. This example demonstrates a common pattern though, the list names has a plural name ending in "s", and the iteration variable is the singular word with no "s". Naming lists and iteration variables in this style makes it easier for other programmers to understand what the different variables are for.
 
+### While loop
+
+For loops are an example of "definite iteration" meaning that the loop's body is run a predefined number of times. A for loop over a list executes the body once for each element in the list. A for loop using the range function will execute the number of times specified by the range function call. This differs from "indefinite iteration" which is when a loop repeats an unknown number of times and ends when some condition is met.
+
+![image](https://user-images.githubusercontent.com/12103383/34333197-fb082f54-e95f-11e7-9027-6d28e07efae9.png)
+
+
+(1) The while keyword indicates that this is a while loop <br>
+(2) Next is a test expression, in this example sum(hand) <= 21. If this expression is true, the loop's body will be executed. The test expression is evaluated again after the loop's body runs. This process of checking the test expression and running the loop repeats until the expression becomes false. <br>
+(3) The loop's body is indented with four spaces. The loop's body should somehow modify one of the variables in the test expression. If the value of the test expression never changes, the result is an infinite loop! In this example the loop's body appends numbers to the hand list, which increases the value of sum(hand). <br>
