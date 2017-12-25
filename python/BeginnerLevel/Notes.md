@@ -157,3 +157,15 @@ Use `list.sort()` when you want to mutate the list, `sorted()` when you want a n
 python_varieties = ['Burmese Python', 'African Rock Python', 'Ball Python', 'Reticulated Python', 'Angolan Python']
 print(sorted(python_varieties,reverse=True)) # Returns a new list
 python_varieties.sort() # Mutates the existing list
+```
+## Loops
+
+### For loop
+
+![image](https://user-images.githubusercontent.com/12103383/34332666-8e47452c-e959-11e7-828a-435d33cd6965.png)
+
+(1) The for keyword signals that this is a for loop.</br>
+(2) The rest of the line specifies what we're iterating over. names is the list that this for loop iterates over. name is this loop's iteration variable. The body of the for loop will be executed once for each element in names, and the iteration variable name can be used in the loop's body to refer to the element that the loop is currently processing.</br>
+(3) The body of a for loop is indented four spaces, and is run once for each element in the list.</br>
+A note about naming You can name iteration variables however you like. This example demonstrates a common pattern though, the list names has a plural name ending in "s", and the iteration variable is the singular word with no "s". Naming lists and iteration variables in this style makes it easier for other programmers to understand what the different variables are for.
+
