@@ -158,6 +158,24 @@ python_varieties = ['Burmese Python', 'African Rock Python', 'Ball Python', 'Ret
 print(sorted(python_varieties,reverse=True)) # Returns a new list
 python_varieties.sort() # Mutates the existing list
 ```
+
+### Sets
+Python includes several data structures other than lists for storing collections, and one of them is perfectly suited for storing unique elements: sets.
+
+Sets are collections of unique elements without any particular ordering. We can create a set from a list like this:
+```
+>>> country_set = set(countries)
+>>> len(country_set)
+196
+```
+
+You can add elements to sets, but you don't use the append method like lists, instead sets have the add method:
+
+`country_set.add("Florin")`
+Sets also have a pop method, just like lists. When you pop an element from a set a random element is removed (remember that sets, unlike lists, are unordered so there is no "last element").
+
+You can iterate over a set using a for loop in the same manner that you can iterate over a list.
+
 ## Loops
 
 ### For loop
