@@ -366,3 +366,273 @@ buy_eggs()
 <br>
 
 This function will throw an `UnboundLocalError`. Python doesn't allow functions to modify variables that aren't in the function's scope.
+
+## Handling Files
+
+All kinds of files have a similar structure on a computer - they are strings of characters that encode some information. The specific file format (often indicated by the extension of the filename, such as .txt or .mp3) will indicate how those characters are organised. The characters in the file are interpreted by the various programs we use to work with them - for example, an image editing program will interpret the information of a digital photograph file and display the image. If we then edit the image in the program, we're using the program to make changes to the characters in the file.
+
+`f = open('/my_path/my_file.txt','r')`
+</br>
+The open function will return a file object - a Python object through which Python will interact with the file itself.
+In this example the second parameter r specifies the mode in which we opened the file, and in our case we opened in read only mode (because we only want to read from the file, we don't want to change the file's contents). We need not specify this parameter, because by default (if we don't specify mode) open will open files in read mode.
+
+Next, in order to access the contents of the file we can use read. `f.read()` creates a string object containing the text in the file. This string gets assigned to the variable named file_data.:
+
+`file_data = f.read()` </br>
+Once we are finished with the file `f` we should close it. This will free up any system resources taken up by the file:
+
+`f.close()` </br>
+It is important to remember to always close files we have opened, once we no longer need them. If we open a lot of files without closing them, we can run out of file handles, and we will not be able to open any new files (exactly how many files you can open before running out of handles will depend on your operating system).
+
+### Writing to a File
+In addition to reading from a file, you can also write to a file, in which case you will change the content of the file. To do so, you must open the file in writing mode:
+
+`f = open('/my_path/my_file.txt','w')`
+</br>
+Caution: once you open a file in writing mode, anything that it had contained previously will be deleted. If you're interested in adding to an existing file (without deleting its content) you should use `append` instead of write and open in append mode (using `a` instead of `w`). 
+
+If the file does not exist, python will create it for you.
+
+We can now write to the file:
+
+`f.write("Hello World!")`</br>
+And after we are done we will close it, like good citizens.
+
+`f.close()`</br>
+
+
+### with
+Python allows you to open a file, do operations on it, and automatically close it afterwards using with.
+</br>
+```
+>>> with open('/my_path/my_file.txt','r') as f:
+>>>   file_data = f.read()
+```
+</br>
+
+In the example above we open a file, perform the operations in the block below the with statement (in this case read from the file) and afterwards Python closes it for us. No need to call `f.close()`!
+
+![image](https://user-images.githubusercontent.com/12103383/34347628-f153193a-ea2a-11e7-99bb-32f4fd35fbd5.png)
+
+In this code, the function open takes as input a path to a file ('/my_path/my_file.txt') on the file system and creates a file object. As we have already seen the 'r' means this object can be used for read mode only. 'r' is actually the default mode so it's not really strictly necessary when calling open.
+
+The code as f assigns the file object created by the call to open to the variable name f - it's similar to saying f = open('/my_path/my_file.txt','r').
+
+In the call f.read(), the file object f reads (all of) the content of the underlying file /my_path/my_file.txt and so f.read() creates a string object containing that text. This string gets assigned to the variable named file_data.
+
+It could be easy to forget to close the file when you're coding but Python provides a special syntax that auto-closes it: this is the keyword with.
+
+After a with open(filename) as f: statement (don't forget the ending colon), write an indented block to use that opened file object f however you need to. Once the indented block has been executed, the file will be closed automatically. This is another kind of scope - you can only access the data in the file via f inside that indented block. Once the file has been closed, you will be unable to interact with it.
+
+After the example code has executed, the string file_data contains the whole file in a single string. You can use all the usual string methods on that string and process its contents.
+
+
+### How to read
+Opening a file object is like opening a window to look into the file. To be more precise, it's a window that's just one character wide, and it always starts off at the very start of the file. This is very different from reading a book or a document, where you can look at multiple words or even pages at once. Think instead of the file as a long stream of characters; the file object can look at just one character at a time, in order.
+
+
+![fileread_python](https://user-images.githubusercontent.com/12103383/34347786-0f733976-ea2c-11e7-94df-9fbde895e721.gif)
+
+
+In the previous code, the call to f.read() had no arguments passed to it; it defaults to reading all the remainder of the file from its current position - the whole file. If you pass .read() an integer argument, it will read up to that number of characters, output all of them, and keep the 'window' at that position ready to read on.
+
+```
+>>> with open(camelot.txt) as song:
+…        print(song.read(2))
+…        print(song.read(8))
+…        print(song.read())
+We
+'re the 
+knights of the round table
+We dance whenever we're able
+```
+
+</br>
+
+This makes moving around in the open file a little tricky, as there are not many landmarks to navigate by.
+
+The \ns in the text are newline characters. The newline character marks the end of a line, and tells a program (such as a text editor) to go down to the next line. However, looking at the stream of characters in the file, \nis just another character. Fortunately, Python knows that these are special characters and you can ask it to read one line at a time. There's a readline() method that reads line by line from a text file.
+
+Conveniently, Python will loop over the lines of a file using the syntax `for line in file`. We can use this to create a list of lines in the file. Because each line still has its newline character attached, we remove this using .strip().
+
+```
+>>> camelot_lines = []
+>>> with open("camelot.txt") as f:
+...     for line in f:
+...         camelot_lines.append(line.strip())
+... 
+>>> print(camelot_lines)
+["We're the knights of the round table", "We dance whenever we're able"]
+
+```
+</br>
+
+## Python Standard Library
+
+Think of the Python Standard Library as a very big set of programming tools that you can use to help you to program in Python. It provides new types of objects and functions for a range of common and specialised tasks, from networking to mathematical statistics. Other people have already written this code and put it into useful "modules" for you to access and use in your own code. Using modules from the Python Standard Library to easily access and use existing code gives you a lot of programming power!
+
+### Importing modules
+The Python Standard Library is organised into parts called modules. Many modules are simply Python files, like the Python scripts you've already used and written. In order to be able to use the code contained in a module we must import it, either in the interactive interpreter or in a Python script of our own.
+
+`import math`
+</br>
+
+Put import statements at the top of your file (each one on a separate line). Importing a module runs the code in that file. It will typically contain a lot of definitions, and usually doesn't show any output. Running the code will make all of the module's functions and types of objects available to use.
+
+```
+print(math.factorial(3))
+6
+```
+</br>
+
+Alos read [Python Module of the week blog](https://pymotw.com/3/) and [the complete library reference manual](https://docs.python.org/3/library/).
+
+### Other ways to import, and naming
+So far you've imported modules with `import module_name`, which makes all of the classes of objects and functions of that module available via dot notation.
+
+There are some other variants of importing that are useful in other situations.
+
+To import an individual function or class from a module use
+```
+>>> from module_name import object_name
+```
+</br>
+
+for example:
+
+`from collections import defaultdict`
+</br>
+This gives access only to `defaultdict` from the module collections. `defaultdict` will be accessible with its own name (without the module name before it) and trying to access collections or even call collections. defaultdict() will give a NameError.
+
+```
+>>> collections
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'collections' is not defined
+>>> collections.defaultdict()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'collections' is not defined
+>>> defaultdict()
+defaultdict(None, {})
+```
+</br>
+`
+Importing individual objects from a module means you only take what you need, and you don't need to use dot notation to access them.
+
+You can import multiple individual objects from a module by separating them with commas:
+
+>>> from collections import defaultdict, namedtuple`
+</br>
+This technique is very common when importing pieces from large libraries.
+
+To import a module and give it a different (usually shorter) name
+To rename a module, you can use as:
+
+`>>> import module_name as different_name`</br>
+for example
+
+`>>> import multiprocessing as mp`</br>
+If the name of a module is particularly long, or if there is a clash with something with the same or similar name, you can rename a module. Check code examples in the documentation as these will often include a standard abbreviation if one is used for this module - using an abbreviation that is consistent with others' will make your code more readable.
+
+You will then access objects from the module via the alternative name that you specified, and the usual dot notation:
+
+```>>> mp.cpu_count()
+4```
+</br>
+Import an individual item from a module and give it a different name
+You can combine the previous two pieces of syntax to import an item from a module and change its name:
+
+`from module_name import object_name as different_name` </br>
+For example:
+
+`from csv import reader as csvreader` </br>
+Again, you'll be able to access only that individual item directly via its newly specified name: no dot notation needed. This can be useful if you have multiple objects with similar names from different packages in your namespace. For example, perhaps you want a csv reader and a json reader - you could import them from their respective modules and give them descriptive names.
+
+One technique that you should NOT use for importing
+Another way of importing that you may see in other people's code but that you should not use is
+
+from module_name import *
+For example
+
+from random import *
+
+This will import every object from the random module individually, and allow you to access each of them directly via its name. The real problem with this is that modules may contain many objects, each of which has a name. Including all of these names may overwrite (or may be overwritten by) other names you are using in your program. import * also makes it impossible for collaborators to find where an imported object was defined. A reader can search for the definition of a function and not find it, and they won't know which import * statement introduced the function. These problems can lead to a lot of confusion. Do NOT use from module_name import *!!
+
+If you really want to use all of the objects from the random module, use the standard import random instead and access each of the objects via the dot notation.
+
+The syntax for importing a module is simply `import package_name`.
+
+Import Statement|Calling the function
+----------------|--------------------
+import random|random.randint(0,10)
+from random import randint|randint(0,10)
+import random as rd|rd.ranint(0,10)
+from random import randint as rint|rint(0,10)
+from random import * | Don't use
+
+csv: very convenient for reading and writing csv files
+collections: useful extensions of the usual data types including OrderedDict, defaultdict and namedtuple
+random: generates pseudo-random numbers, shuffles sequences randomly and chooses random items
+string: more functions on strings. This module also contains useful collections of letters like string.digits (a string containing all characters with are valid digits).
+re: pattern-matching in strings via regular expressions
+math: some standard mathematical functions
+os: interacting with operating systems
+os.path: submodule of os for manipulating path names
+sys: work directly with the Python interpreter
+json: good for reading and writing json files (good for web work)
+
+### Third-Party Libraries and Package Managers
+Python has a large standard library compared to most languages. In fact, people say that Python comes with "batteries included" because it comes with the libraries you need to get right to work. However, the standard library doesn't come with everything you might want; some tasks are too specialized to be accommodated by the standard library. Fortunately there are tens of thousands of third-party libraries written by independent developers. You can browse a listing of the most popular third-party libraries at PyPi Ranking.
+
+How do we get these packages though if they aren't included with Python itself? We can install libraries using pip, a package manager that is included with Python 3. Python 2 users also use pip, but since it doesn't come included with Python 2 it must be installed separately. If you have both Python 2 and Python 3 installed, each with pip, you can use commands pip2 and pip3 to distinguish them.
+
+pip is the standard package manager for Python, but it isn't the only one. One popular alternative is Anaconda which is designed specifically for data scientists and similar users. We'll teach you about pip because it's the general standard.
+Installing Packages with pip
+Let's use pip to install the pytz library. To make sure we are using the pip associated with the Python 3 installation, we'll use the command pip3. pytz is a library for working with time zones, which is a remarkably complicated task.
+
+We can install pytz from our command line with pip3:
+
+$ pip3 install pytz
+This command will download and install pytz so that it's available to import in our programs. Once installed, we can import third-party packages using the same syntax we use to import from the standard library. In this example I import pytz and also datetime from the standard library. It's standard practice to put the import statements for third-party libraries after imports from the standard library.
+
+from datetime import datetime
+
+import pytz
+
+utc = pytz.utc # utc is Coordinated Universal Time
+ist = pytz.timezone('Asia/Kolkata') #IST is Indian Standard Time
+
+now = datetime.now(tz=utc) # this is the current time in UTC
+ist_now = now.astimezone(ist) # this is the current time in IST.
+This example stores the current time, expressed in terms of coordinated universal time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) in the variable now. It then translates this time into Indian Standard TIme and stores that in the variable ist_now.
+Useful Third-Party Packages
+Being able to install and import third party libraries is useful, but to be an effective programmer you also need to know what libraries are available for you to use. People typically learn about useful new libraries by word of mouth; from an online recommendation or from a colleague. If you're a new Python programmer you may not have many colleagues, so to get you started here's a list of packages that are popular with engineers at Udacity.
+
+IPython - A better interactive Python interpreter
+requests - Provides easy to use methods to make web requests. Useful for accessing web APIs.
+Flask - a lightweight framework for making web applications and APIs.
+Django - A more featureful framework for making web applications. Django is particularly good for designing complex, content heavy, web applications.
+Beautiful Soup - Used to parse HTML and extract information from it. Great for web scraping.
+pytest - extends Python's builtin assertions and unittest module.
+PyYAML - For reading and writing YAML files.
+NumPy - The fundamental package for scientific computing with Python. It contains among other things a powerful N-dimensional array object and useful linear algebra capabilities.
+pandas - A library containing high-performance, data structures and data analysis tools. In particular, pandas provides dataframes!
+matplotlib - a 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments.
+ggplot - Another 2D plotting library, based on R's ggplot2 library.
+Pillow - The Python Imaging Library adds image processing capabilities to your Python interpreter.
+pyglet - A cross-platform application framework intended for game development.
+Pygame - A set of Python modules designed for writing games.
+pytz - World Timezone Definitions for Python
+requirements.txt
+Larger Python programs might depend on dozens of third party packages. To make it easier to share these programs programmers often list a project's dependencies in a file called requirements.txt. This is an example requirements.txt file:
+
+beautifulsoup4==4.5.1
+bs4==0.0.1
+pytz==2016.7
+requests==2.11.1
+Each line of the file includes the name of a package and its version number. The version number is technically optional, but it usually should be included. Libraries can change subtly (or dramatically!) between versions, so it's important to use the same library versions that the program's author had when they wrote the program.
+
+You can use pip to install all of a project's dependencies at once with this command:
+
+`$ pip3 install -r requirements.txt`
