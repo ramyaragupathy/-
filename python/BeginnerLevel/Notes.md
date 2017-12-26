@@ -493,6 +493,7 @@ So far you've imported modules with `import module_name`, which makes all of the
 There are some other variants of importing that are useful in other situations.
 
 To import an individual function or class from a module use
+
 ```
 >>> from module_name import object_name
 ```
@@ -517,12 +518,12 @@ NameError: name 'collections' is not defined
 defaultdict(None, {})
 ```
 </br>
-`
+
 Importing individual objects from a module means you only take what you need, and you don't need to use dot notation to access them.
 
 You can import multiple individual objects from a module by separating them with commas:
 
->>> from collections import defaultdict, namedtuple`
+`>>> from collections import defaultdict, namedtuple`
 </br>
 This technique is very common when importing pieces from large libraries.
 
@@ -536,10 +537,13 @@ for example
 If the name of a module is particularly long, or if there is a clash with something with the same or similar name, you can rename a module. Check code examples in the documentation as these will often include a standard abbreviation if one is used for this module - using an abbreviation that is consistent with others' will make your code more readable.
 
 You will then access objects from the module via the alternative name that you specified, and the usual dot notation:
-
-```>>> mp.cpu_count()
-4```
 </br>
+```
+>>> mp.cpu_count()
+4
+```
+</br>
+
 Import an individual item from a module and give it a different name
 You can combine the previous two pieces of syntax to import an item from a module and change its name:
 
@@ -552,10 +556,10 @@ Again, you'll be able to access only that individual item directly via its newly
 One technique that you should NOT use for importing
 Another way of importing that you may see in other people's code but that you should not use is
 
-from module_name import *
+`from module_name import *`</br>
 For example
 
-from random import *
+`from random import *` </br>
 
 This will import every object from the random module individually, and allow you to access each of them directly via its name. The real problem with this is that modules may contain many objects, each of which has a name. Including all of these names may overwrite (or may be overwritten by) other names you are using in your program. import * also makes it impossible for collaborators to find where an imported object was defined. A reader can search for the definition of a function and not find it, and they won't know which import * statement introduced the function. These problems can lead to a lot of confusion. Do NOT use from module_name import *!!
 
