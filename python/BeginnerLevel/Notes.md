@@ -263,23 +263,25 @@ This dictionary maps element names (strings) to their atomic numbers (ints). But
 elements = {'hydrogen': {'number': 1, 'weight': 1.00794, 'symbol': 'H'},
             'helium': {'number': 2, 'weight': 4.002602, 'symbol': 'He'}}
 ```
-<br>
+</br>
 We can look the information about an entry in this nested dictionary in the same ways we did before, with square brackets or the get method:
 
-<br>
+</br>
+
 ```
->>> print(elements['helium'])
+print(elements['helium'])
 {'number': 2, 'symbol': 'He', 'weight': 4.002602}
->>> print(elements.get('unobtainium', 'There\'s no such element!'))
+print(elements.get('unobtainium', 'There\'s no such element!'))
 There's no such element!
 ```
-<br>
+
+</br>
 
 We can look up specific information from the helium dictionary like this:
-<br>
+</br>
 
 ```
->>> print(elements['helium']['weight'])
+print(elements['helium']['weight'])
 4.002602
 ```
 <br>
