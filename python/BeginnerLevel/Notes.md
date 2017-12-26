@@ -187,34 +187,39 @@ Sap Green
 Pthalo Blue
 ```
 Notice that the for loop didn't print the colors in the same order they were inserted into the set. Sets don't track ordering the way lists do, so iterating over them produces values in an arbitrary order. Sets are not sortable but they are mutable.
+
 ### Dictionaries
 
- Rather than storing single objects like lists and sets do, dictionaries store pairs of elements: keys and values. In this example we define a dictionary where the keys are element names and the values are their corresponding atomic numbers.
+Rather than storing single objects like lists and sets do, dictionaries store pairs of elements: keys and values. In this example we define a dictionary where the keys are element names and the values are their corresponding atomic numbers.
 
-`elements = {'hydrogen': 1, 'helium': 2, 'carbon': 6}`
-We can look up values in the dictionary using square brackets enclosing a key:
+`elements = {'hydrogen': 1, 'helium': 2, 'carbon': 6}` <br>
+We can look up values in the dictionary using square brackets enclosing a key:<br>
 ```
 >>> print(elements['carbon'])
-6```
+6
+```
+<br>
 
-We can also insert new values into the dictionary with square brackets:
+We can also insert new values into the dictionary with square brackets:<br>
 
-```>>> elements['lithium'] = 3
+```
+>>> elements['lithium'] = 3
 >>> print(elements['lithium'])
-3```
-
+3
+```
+<br>
 Dictionary keys are similar to list indices: we can select elements from the data structure by putting the index/key in square brackets. Unlike lists, dictionaries can have keys of any immutable type, not just integers. The element dictionary uses strings for its keys. However, it's not even necessary for every key to have the same type!
 
 We can check whether a value is in a dictionary on the same way we check whether a value is in a list or set with the `in` keyword.
-
+<br>
 ```
 if 'mithril' in elements:
     print("That's a real element!")
 else:
-    print("There's no such element!')
+    print("There's no such element!")
 ```
-
-Dicts have a related method that's also useful, `get`. `get` looks up values in a dictionary, but unlike square brackets, `get` returns `None` (or a default value of your choice) if the key isn't found. If you expect lookups to sometimes fail, get might be a better tool than normal square bracket lookups.
+<br>
+Dicts have a related method that's also useful, `get`. `get` looks up values in a dictionary, but unlike square brackets, `get` returns `None` (or a default value of your choice) if the key isn't found. If you expect lookups to sometimes fail, get might be a better tool than normal square bracket lookups.<br>
 
 ```
 >>> elements.get('dilithium')
@@ -224,7 +229,9 @@ KeyError: 'dilithium'
 >>> elements.get('kryptonite', 'There\'s no such element!')
 "There's no such element!"
 ```
+<br>
 Dicts store key value pairs, and when we loop over them we iterate through the keys:
+<br>
 
 ```
 Beatles_Discography = {"Please Please Me": 1963, "With the Beatles": 1963, 
@@ -237,36 +244,47 @@ Beatles_Discography = {"Please Please Me": 1963, "With the Beatles": 1963,
 
 for album_title in Beatles_Discography:
     print("title: {}, year: {}".format(album_title, Beatles_Discography[album_title]))
-    ```
-    
+
+```
+<br>
+
 We can use the key album_title to get to each value in the the dict: Beatles_Discography[album_title].
 
 #### A Dictionary of Dictionaries
 Let's revisit the elements dictionary,
 
-`elements = {'hydrogen': 1, 'helium': 2, 'carbon': 6}`
-This dictionary maps element names (strings) to their atomic numbers (ints). But what if we wanted to store more information about each element, like their weight and symbol? We can do that by adjusting the dictionary so that it maps element names (strings) to a dictionary that stores that collection of data:
+`elements = {'hydrogen': 1, 'helium': 2, 'carbon': 6}` 
+<br>
 
+This dictionary maps element names (strings) to their atomic numbers (ints). But what if we wanted to store more information about each element, like their weight and symbol? We can do that by adjusting the dictionary so that it maps element names (strings) to a dictionary that stores that collection of data:
+<br>
 ```
 elements = {'hydrogen': {'number': 1, 'weight': 1.00794, 'symbol': 'H'},
             'helium': {'number': 2, 'weight': 4.002602, 'symbol': 'He'}}
 ```
+<br>
 We can look the information about an entry in this nested dictionary in the same ways we did before, with square brackets or the get method:
+<br>
 ```
 >>> print(elements['helium'])
 {'number': 2, 'symbol': 'He', 'weight': 4.002602}
 >>> print(elements.get('unobtainium', 'There\'s no such element!'))
 There's no such element!
 ```
+<br>
 We can look up specific information from the helium dictionary like this:
-
-```>>> print(elements['helium']['weight'])
-4.002602```
+<br>
+```
+>>> print(elements['helium']['weight'])
+4.002602
+```
+<br>
 This code is first looking up the key "helium" in the elements dictionary, producing the helium dictionary. The second lookup, ['weight'] then looks up the "weight" key in that helium dictionary to find helium's atomic weight.
 
 ### Tuples
 
 Python provides another useful built-in type: tuples. Tuples are used to store related pieces of information. Consider this example involving latitude and longitude:
+<br>
 ```
 >>> AngkorWat = (13.4125, 103.866667)
 >>> print(type(AngkorWat))
@@ -274,25 +292,31 @@ Python provides another useful built-in type: tuples. Tuples are used to store r
 >>> print("Angkor Wat is at latitude: {}".format(AngkorWat[0]))
 Angkor Wat is at latitude: 13.4125
 >>> print("Angkor Wat is at longitude: {}".format(AngkorWat[1]))
-Angkor Wat is at longitude: 103.866667```
-
+Angkor Wat is at longitude: 103.866667
+```
+<br>
 Tuples are similar to lists in that they store an ordered collection of objects which can be accessed by their indexes (for example AngkorWat[0] and AngkorWat[1]). Unlike lists, tuples are immutable. You can't add and remove items from tuples, or sort them in place.
 
 #### Why Tuples?
 Why do we have tuples if they're like lists with less features? Tuples useful when you have two or more values that are so closely related that they will always be used together, like latitude and longitude coordinates.
 
 Tuples can be used to assign multiple variables in a compact way:
+<br>
 ```
 >>> dimensions = 52, 40, 100 
 >>> length, width, height = dimensions 
 >>> print("The dimensions are {}x{}x{}".format(length, width, height))
-The dimensions are 52x40x100```
+The dimensions are 52x40x100
+
+```
+<br>
 Notice that the values assigned to the tuple dimensions aren't surrounded with parentheses as previous examples were. The parentheses are optional when making tuples, and programmers frequently omit them if parentheses don't clarify the code.
 
 #### Tuple Unpacking
 In the second line, three variables are assigned from the content of the tuple dimensions. This is called tuple unpacking. You can use tuple unpacking to assign the information from a tuple into multiple variables without having to access them one by one and make multiple assignment statements.
 
-In this example, if we won't need to use dimensions directly, we could shorten those two lines of code into a single line that assigns three variables in one go!
+In this example, if we won't need to use dimensions directly, we could shorten those two lines of code into a single line that assigns three variables in one go! 
+<br>
 
 `length, width, height = 52, 40, 100`
 
@@ -323,7 +347,7 @@ For loops are an example of "definite iteration" meaning that the loop's body is
 While in many or most other programming languages variables are treated as global if not otherwise declared, Python deals with variables the other way around. They are local, if not otherwise declared. when you define variables inside a function definition, they are local to this function by default. This means that anything you will do to such a variable in the body of the function will have no effect on other variables outside of the function, even if they have the same name. This means that the function body is the scope of such a variable, i.e. the enclosing context where this name with its values is associated. 
 
 All variables have the scope of the block, where they are declared and defined in. They can only be used after the point of their declaration. 
-
+<br>
 ```
 egg_count = 0
 
@@ -332,5 +356,6 @@ def buy_eggs():
 
 buy_eggs()
 ```
+<br>
 
 This function will throw an `UnboundLocalError`. Python doesn't allow functions to modify variables that aren't in the function's scope.
