@@ -575,31 +575,35 @@ import random as rd|rd.ranint(0,10)
 from random import randint as rint|rint(0,10)
 from random import * | Don't use
 
-csv: very convenient for reading and writing csv files
-collections: useful extensions of the usual data types including OrderedDict, defaultdict and namedtuple
-random: generates pseudo-random numbers, shuffles sequences randomly and chooses random items
-string: more functions on strings. This module also contains useful collections of letters like string.digits (a string containing all characters with are valid digits).
-re: pattern-matching in strings via regular expressions
-math: some standard mathematical functions
-os: interacting with operating systems
-os.path: submodule of os for manipulating path names
-sys: work directly with the Python interpreter
-json: good for reading and writing json files (good for web work)
+#### Useful libraries
+
+- [csv](https://docs.python.org/3/library/csv.html): very convenient for reading and writing csv files
+- [collections](https://docs.python.org/3/library/collections.html): useful extensions of the usual data types including OrderedDict, defaultdict and namedtuple
+- [random](https://docs.python.org/3/library/random.html): generates pseudo-random numbers, shuffles sequences randomly and chooses random items
+- [string](https://docs.python.org/3/library/string.html): more functions on strings. This module also contains useful collections of letters like string.digits (a string containing all characters with are valid digits).
+- [re](https://docs.python.org/3/library/re.html): pattern-matching in strings via regular expressions
+- [math](https://docs.python.org/3/library/math.html): some standard mathematical functions
+- [os](https://docs.python.org/3/library/os.html): interacting with operating systems
+- [os.path](https://docs.python.org/3/library/os.path.html): submodule of os for manipulating path names
+- [sys](https://docs.python.org/3/library/sys.html): work directly with the Python interpreter
+- [json](https://docs.python.org/3/library/json.html): good for reading and writing json files (good for web work)
 
 ### Third-Party Libraries and Package Managers
 Python has a large standard library compared to most languages. In fact, people say that Python comes with "batteries included" because it comes with the libraries you need to get right to work. However, the standard library doesn't come with everything you might want; some tasks are too specialized to be accommodated by the standard library. Fortunately there are tens of thousands of third-party libraries written by independent developers. You can browse a listing of the most popular third-party libraries at PyPi Ranking.
 
-How do we get these packages though if they aren't included with Python itself? We can install libraries using pip, a package manager that is included with Python 3. Python 2 users also use pip, but since it doesn't come included with Python 2 it must be installed separately. If you have both Python 2 and Python 3 installed, each with pip, you can use commands pip2 and pip3 to distinguish them.
+How do we get these packages though if they aren't included with Python itself? We can install libraries using pip, a package manager that is included with Python 3. Python 2 users also use pip, but since it doesn't come included with Python 2 it must be installed separately. If you have both Python 2 and Python 3 installed, each with pip, you can use commands `pip2` and `pip3` to distinguish them.
 
-pip is the standard package manager for Python, but it isn't the only one. One popular alternative is Anaconda which is designed specifically for data scientists and similar users. We'll teach you about pip because it's the general standard.
-Installing Packages with pip
-Let's use pip to install the pytz library. To make sure we are using the pip associated with the Python 3 installation, we'll use the command pip3. pytz is a library for working with time zones, which is a remarkably complicated task.
+`pip` is the standard package manager for Python, but it isn't the only one. One popular alternative is `Anaconda` which is designed specifically for data scientists and similar users. pip is the general standard.
+
+#### Installing Packages with pip
+Let's use pip to install the `pytz` library. To make sure we are using the pip associated with the Python 3 installation, we'll use the command pip3. pytz is a library for working with time zones, which is a remarkably complicated task.
 
 We can install pytz from our command line with pip3:
 
-$ pip3 install pytz
-This command will download and install pytz so that it's available to import in our programs. Once installed, we can import third-party packages using the same syntax we use to import from the standard library. In this example I import pytz and also datetime from the standard library. It's standard practice to put the import statements for third-party libraries after imports from the standard library.
+`$ pip3 install pytz`</br>
+This command will download and install pytz so that it's available to import in our programs. Once installed, we can import third-party packages using the same syntax we use to import from the standard library. It's standard practice to put the import statements for third-party libraries after imports from the standard library.
 
+```
 from datetime import datetime
 
 import pytz
@@ -609,32 +613,43 @@ ist = pytz.timezone('Asia/Kolkata') #IST is Indian Standard Time
 
 now = datetime.now(tz=utc) # this is the current time in UTC
 ist_now = now.astimezone(ist) # this is the current time in IST.
+```
+</br>
+
 This example stores the current time, expressed in terms of coordinated universal time](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) in the variable now. It then translates this time into Indian Standard TIme and stores that in the variable ist_now.
-Useful Third-Party Packages
+
+#### Useful Third-Party Packages
+
 Being able to install and import third party libraries is useful, but to be an effective programmer you also need to know what libraries are available for you to use. People typically learn about useful new libraries by word of mouth; from an online recommendation or from a colleague. If you're a new Python programmer you may not have many colleagues, so to get you started here's a list of packages that are popular with engineers at Udacity.
 
-IPython - A better interactive Python interpreter
-requests - Provides easy to use methods to make web requests. Useful for accessing web APIs.
-Flask - a lightweight framework for making web applications and APIs.
-Django - A more featureful framework for making web applications. Django is particularly good for designing complex, content heavy, web applications.
-Beautiful Soup - Used to parse HTML and extract information from it. Great for web scraping.
-pytest - extends Python's builtin assertions and unittest module.
-PyYAML - For reading and writing YAML files.
-NumPy - The fundamental package for scientific computing with Python. It contains among other things a powerful N-dimensional array object and useful linear algebra capabilities.
-pandas - A library containing high-performance, data structures and data analysis tools. In particular, pandas provides dataframes!
-matplotlib - a 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments.
-ggplot - Another 2D plotting library, based on R's ggplot2 library.
-Pillow - The Python Imaging Library adds image processing capabilities to your Python interpreter.
-pyglet - A cross-platform application framework intended for game development.
-Pygame - A set of Python modules designed for writing games.
-pytz - World Timezone Definitions for Python
-requirements.txt
+- [IPython](https://ipython.org/) - A better interactive Python interpreter
+- [requests](http://docs.python-requests.org/) - Provides easy to use methods to make web requests. Useful for accessing web APIs.
+- [Flask](http://flask.pocoo.org/) - a lightweight framework for making web applications and APIs.
+- [Django](v) - A more featureful framework for making web applications. Django is particularly good for designing complex, content heavy, web applications.
+- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) - Used to parse HTML and extract information from it. Great for web scraping.
+- [pytest](v) - extends Python's builtin assertions and unittest module.
+- [PyYAML](v) - For reading and writing YAML files.
+- [NumPy](http://www.numpy.org/) - The fundamental package for scientific computing with Python. It contains among other things a powerful N-dimensional array object and useful linear algebra capabilities.
+- [pandas](http://pandas.pydata.org/) - A library containing high-performance, data structures and data analysis tools. In particular, pandas provides dataframes!
+- [matplotlib](http://matplotlib.org/) - a 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments.
+- [ggplot](http://ggplot.yhathq.com/) - Another 2D plotting library, based on R's ggplot2 library.
+- [Pillow](https://python-pillow.org/) - The Python Imaging Library adds image processing capabilities to your Python interpreter.
+- [pyglet](http://www.pyglet.org/) - A cross-platform application framework intended for game development.
+- [Pygame](http://www.pygame.org/) - A set of Python modules designed for writing games.
+- [pytz](http://pytz.sourceforge.net/) - World Timezone Definitions for Python
+
+#### requirements.txt
+
 Larger Python programs might depend on dozens of third party packages. To make it easier to share these programs programmers often list a project's dependencies in a file called requirements.txt. This is an example requirements.txt file:
 
+```
 beautifulsoup4==4.5.1
 bs4==0.0.1
 pytz==2016.7
 requests==2.11.1
+```
+</br>
+
 Each line of the file includes the name of a package and its version number. The version number is technically optional, but it usually should be included. Libraries can change subtly (or dramatically!) between versions, so it's important to use the same library versions that the program's author had when they wrote the program.
 
 You can use pip to install all of a project's dependencies at once with this command:
