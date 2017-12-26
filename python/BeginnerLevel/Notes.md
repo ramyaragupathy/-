@@ -241,7 +241,7 @@ for album_title in Beatles_Discography:
     
 We can use the key album_title to get to each value in the the dict: Beatles_Discography[album_title].
 
-### A Dictionary of Dictionaries
+#### A Dictionary of Dictionaries
 Let's revisit the elements dictionary,
 
 `elements = {'hydrogen': 1, 'helium': 2, 'carbon': 6}`
@@ -264,6 +264,38 @@ We can look up specific information from the helium dictionary like this:
 4.002602```
 This code is first looking up the key "helium" in the elements dictionary, producing the helium dictionary. The second lookup, ['weight'] then looks up the "weight" key in that helium dictionary to find helium's atomic weight.
 
+### Tuples
+
+Python provides another useful built-in type: tuples. Tuples are used to store related pieces of information. Consider this example involving latitude and longitude:
+```
+>>> AngkorWat = (13.4125, 103.866667)
+>>> print(type(AngkorWat))
+<class 'tuple'>
+>>> print("Angkor Wat is at latitude: {}".format(AngkorWat[0]))
+Angkor Wat is at latitude: 13.4125
+>>> print("Angkor Wat is at longitude: {}".format(AngkorWat[1]))
+Angkor Wat is at longitude: 103.866667```
+
+Tuples are similar to lists in that they store an ordered collection of objects which can be accessed by their indexes (for example AngkorWat[0] and AngkorWat[1]). Unlike lists, tuples are immutable. You can't add and remove items from tuples, or sort them in place.
+
+#### Why Tuples?
+Why do we have tuples if they're like lists with less features? Tuples useful when you have two or more values that are so closely related that they will always be used together, like latitude and longitude coordinates.
+
+Tuples can be used to assign multiple variables in a compact way:
+```
+>>> dimensions = 52, 40, 100 
+>>> length, width, height = dimensions 
+>>> print("The dimensions are {}x{}x{}".format(length, width, height))
+The dimensions are 52x40x100```
+Notice that the values assigned to the tuple dimensions aren't surrounded with parentheses as previous examples were. The parentheses are optional when making tuples, and programmers frequently omit them if parentheses don't clarify the code.
+
+#### Tuple Unpacking
+In the second line, three variables are assigned from the content of the tuple dimensions. This is called tuple unpacking. You can use tuple unpacking to assign the information from a tuple into multiple variables without having to access them one by one and make multiple assignment statements.
+
+In this example, if we won't need to use dimensions directly, we could shorten those two lines of code into a single line that assigns three variables in one go!
+
+`length, width, height = 52, 40, 100`
+
 ## Loops
 
 ### For loop
@@ -285,3 +317,20 @@ For loops are an example of "definite iteration" meaning that the loop's body is
 (1) The while keyword indicates that this is a while loop <br>
 (2) Next is a test expression, in this example sum(hand) <= 21. If this expression is true, the loop's body will be executed. The test expression is evaluated again after the loop's body runs. This process of checking the test expression and running the loop repeats until the expression becomes false. <br>
 (3) The loop's body is indented with four spaces. The loop's body should somehow modify one of the variables in the test expression. If the value of the test expression never changes, the result is an infinite loop! In this example the loop's body appends numbers to the hand list, which increases the value of sum(hand). <br>
+
+## Variable Scope
+
+While in many or most other programming languages variables are treated as global if not otherwise declared, Python deals with variables the other way around. They are local, if not otherwise declared. when you define variables inside a function definition, they are local to this function by default. This means that anything you will do to such a variable in the body of the function will have no effect on other variables outside of the function, even if they have the same name. This means that the function body is the scope of such a variable, i.e. the enclosing context where this name with its values is associated. 
+
+All variables have the scope of the block, where they are declared and defined in. They can only be used after the point of their declaration. 
+
+```
+egg_count = 0
+
+def buy_eggs():
+    egg_count += 12 # purchase a dozen eggs
+
+buy_eggs()
+```
+
+This function will throw an `UnboundLocalError`. Python doesn't allow functions to modify variables that aren't in the function's scope.
