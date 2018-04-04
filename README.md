@@ -15,7 +15,7 @@
 - What is a closure?
 - What is a Functional composition?
 - What is a promise?
-- Temporal dead zone
+- Temporal dead zone - http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified
 - Closures
 - Lexical scoping
 - Hoisting
