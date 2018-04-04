@@ -23,7 +23,7 @@
 
 ### Algorithms
 
-- Asymptotic notation
+- Asymptotic notation http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified
 
 #### Searching
 
