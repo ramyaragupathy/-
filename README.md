@@ -15,6 +15,11 @@
 - What is a closure?
 - What is a Functional composition?
 - What is a promise?
+- Temporal dead zone
+- Closures
+- Lexical scoping
+- Hoisting
+
 
 ### Algorithms
 
