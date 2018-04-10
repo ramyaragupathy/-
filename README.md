@@ -24,7 +24,7 @@
 
 ### Algorithms
 
-- Asymptotic notation http://jsrocks.org/2015/01/temporal-dead-zone-tdz-demystified
+- Asymptotic notation https://learnxinyminutes.com/docs/asymptotic-notation/
 
 #### Searching
 
