@@ -19,6 +19,10 @@
 - Lexical scoping
 - Hoisting
 - [Buffers vs Streams vs Binary data](https://github.com/ramyaragupathy/Playground/blob/master/NodeJS/buffer.md)
+- Global object vs global instance
+- this: default binding, method binding, constructor binding, explicit binding (call/apply/bind)
+- Arrow functions - How do they work? uses lexical binding
+- IIFE: Immediately Invoked function expressions
 
 
 ### Algorithms
