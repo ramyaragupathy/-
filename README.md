@@ -28,6 +28,7 @@
 ### Algorithms
 
 - Asymptotic notation https://learnxinyminutes.com/docs/asymptotic-notation/
+- [String searching algorithms](https://en.wikipedia.org/wiki/String_searching_algorithm)
 
 #### Searching
 
