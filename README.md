@@ -41,11 +41,11 @@
 
 **Done**
 - [x] PBF
-
+- [x] ORC
+- [x] SHP
+- [x] KML
 **List**
-- ORC
-- SHP
-- KML
+
 - Geojson
 - Bootstrap
 - jekyll
